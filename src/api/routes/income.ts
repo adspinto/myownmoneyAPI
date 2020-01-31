@@ -6,23 +6,29 @@ import middlewares from '../middlewares';
 import { celebrate, Joi } from 'celebrate';
 import { ILogger } from '../../interfaces/ILogger';
 const route = Router();
-export default (app: Router) => {
-  app.use('/users', route);
 
-  route.get('/me', middlewares.isAuth, middlewares.attachCurrentUser, (req: Request, res: Response) => {
-    return res.json({ user: req.currentUser }).status(200);
+
+
+export default (app: Router) => {
+  app.use('/income', route);
+
+  route.get('/me', middlewares.isAuth, middlewares.attachCurrentUserIncome,  (req: Request, res: Response) => {
+    return res.json({ totalIncome: req.userIncome }).status(200);
   });
+
+
   
   route.post(
-    '/update',
+    '/create',
     middlewares.isAuth,
     middlewares.attachCurrentUser,
+    middlewares.attachCurrentUserIncome,
     celebrate({
       body: Joi.object({
-        name:Joi.string(),
-        email: Joi.string(),
-        password: Joi.string(),
-        city: Joi.string(),
+        value:Joi.string(),
+        title: Joi.string(),
+        description: Joi.string(),
+        fixed: Joi.string(),
         state: Joi.string(),
         ocupation: Joi.string(),
         

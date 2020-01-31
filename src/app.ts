@@ -9,6 +9,10 @@ import Logger from './loaders/logger';
 async function startServer() {
   const app = express();
 
+
+  
+
+  console.log("server start on port 3000")
   /**
    * A little hack here
    * Import/Export can only be used in 'top-level code'
@@ -16,6 +20,8 @@ async function startServer() {
    * So we are using good old require.
    **/
   await require('./loaders').default({ expressApp: app });
+  
+  
 
   app.listen(config.port, err => {
     if (err) {
@@ -29,6 +35,7 @@ async function startServer() {
       ################################################
     `);
   });
+
 }
 
 startServer();

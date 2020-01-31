@@ -17,9 +17,11 @@ const User = new mongoose.Schema(
     },
 
     password: String,
-
     salt: String,
-
+    city:String,
+    state:String,
+    ocupation:String,
+    
     role: {
       type: String,
       default: 'user',
