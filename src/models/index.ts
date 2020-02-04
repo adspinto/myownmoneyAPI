@@ -9,9 +9,13 @@ const incomeModel = {
     // Notice the require syntax and the '.default'
     model: require('./income').default,
 }
+const expenseModel = {
+    name: 'expenseModel',
+    model: require('./expense').default,
+}
 
 
 
 
 
-export { userModel, incomeModel }
+export { userModel, incomeModel, expenseModel }
