@@ -3,6 +3,7 @@ import { EventSubscriber, On } from 'event-dispatch';
 import events from './events';
 import { IUser } from '../interfaces/IUser';
 import mongoose from 'mongoose';
+import { ILogger } from '../interfaces/ILogger';
 
 @EventSubscriber()
 export default class UserSubscriber {
@@ -18,7 +19,7 @@ export default class UserSubscriber {
    */
   @On(events.user.signIn)
   public onUserSignIn({ _id }: Partial<IUser>) {
-    const Logger = Container.get('logger');
+    const Logger: ILogger = Container.get('logger');
 
     try {
       const UserModel = Container.get('UserModel') as mongoose.Model<IUser & mongoose.Document>;
@@ -33,7 +34,7 @@ export default class UserSubscriber {
   }
   @On(events.user.signUp)
   public onUserSignUp({ name, email, _id }: Partial<IUser>) {
-    const Logger = Container.get('logger');
+    const Logger: ILogger = Container.get('logger');
 
     try {
       /**
