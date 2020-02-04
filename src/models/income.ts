@@ -9,7 +9,7 @@ const Income = new mongoose.Schema(
         },
         
         value: {
-            type: String,
+            type: Number,
             required: [true, 'Please enter a value'],
             index: true,
         },
@@ -21,7 +21,8 @@ const Income = new mongoose.Schema(
         },
         description: String,
         type: String,
-        fixed: Boolean
+        fixed: Boolean,
+        deleted: Boolean
     },
     { timestamps: true },
 );

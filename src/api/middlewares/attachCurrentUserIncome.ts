@@ -16,15 +16,15 @@ const attachCurrentUserIncome = async (req, res, next) => {
 
     const IncomeModel = Container.get('incomeModel') as mongoose.Model<IIncome & mongoose.Document>;
 
-    const userIncomeRecord = await IncomeModel.find({ userId: req.token._id }, (err, docs) => {
+    const userIncomeRecord = await IncomeModel.find({ userId: req.token._id, deleted: false }, null, { new: true }, (err, docs) => {
       if (err) throw { error: err }
-      console.log("what is docs:", docs);
+
       return docs
     });
     if (!userIncomeRecord) {
       return res.sendStatus(401);
     }
-    console.log("what is this:", userIncomeRecord);
+
     const userIncome = userIncomeRecord; //to object?
 
     req.userIncome = userIncome;

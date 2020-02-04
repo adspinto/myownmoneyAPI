@@ -16,7 +16,7 @@ const getTokenFromHeader = req => {
    * So I believe that this should handle more 'edge' cases ;)
    */
 
-  console.log(req.headers)
+
   if (
     (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token') ||
     (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer')

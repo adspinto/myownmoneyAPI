@@ -12,7 +12,7 @@ declare global {
 
   namespace Models {
     export type UserModel = Model<IUser & Document>;
-    export type Income = Model<IIncome & Document>;
+    export type IncomeModel = Model<IIncome & Document>;
     
   }
 }

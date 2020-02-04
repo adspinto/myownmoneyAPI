@@ -37,7 +37,6 @@ export default ({ app }: { app: express.Application }) => {
 
   /// catch 404 and forward to error handler
   app.use((req, res, next) => {
-    console.log(res.type)
     const err = new Error('Not Found blau');
     err['status'] = 404;
     next(err);

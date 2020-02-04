@@ -22,7 +22,7 @@ export default class UserService {
       this.logger.silly('Hashing password');
       const { password, city, state, ocupation, name, email } = updateInputDTO
       if(password) var hashedPassword = await argon2.hash(password, { salt });
-      console.log(updateInputDTO)
+      
 
       var query = { _id: userId };
       var update = {};
@@ -34,7 +34,7 @@ export default class UserService {
         }
       })
       var options = { new: true }
-      console.log("aaaaaathim",Object.entries(update).length === 0, update.constructor === Object, update)
+      
       if(Object.entries(update).length === 0 && update.constructor === Object) throw  new Error('You must send, at least, one property to update');
       const userRecord = await this.userModel.findOneAndUpdate(
         query,
